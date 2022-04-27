@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+    <meta charset="utf-8">
+
+    <meta name="author" content="codexcoder">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Meta tags for Social Media(Better SEO) -->
+    <!-- <meta property="og:title" content=""> -->
+    <!-- <meta property="og:type" content=""> -->
+    <!-- <meta property="og:url" content=""> -->
+    <!-- <meta property="og:image" content=""> -->
+    <!-- site favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- ====== All css file ========= -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="~/signup/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/signup/assets/css//icofont.min.css">
+    <link rel="stylesheet" href="~/signup/assets/css/animate.css">
+    <link rel="stylesheet" href="~/signup/assets/css/lightcase.css">
+    <link rel="stylesheet" href="~/signup/assets/css/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/signup/assets/css/style.min.css">
+
+
+    <!-- site title -->
+    <title>Enftomark</title>
+</head>
+
+<body>
+   
+    <!-- ==========Page Header Section Start Here========== -->
+    <section class="page-header-section style-1">
+        <div class="container">
+            <div class="page-header-content">
+                <div class="page-header-inner">
+                    <div class="page-title">
+                        <h2>Sign Up Page </h2>
+                    </div>
+                    <ol class="breadcrumb">
+                        <li><a href="../Home/index.html">Home</a></li>
+                        <li class="active">Sign Up </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ==========Page Header Section Ends Here========== -->
+    <!-- ==========login Section start Here========== -->
+    <div class="login-section padding-top padding-bottom">
+        <div class=" container">
+            <div class="row g-5 align-items-center flex-md-row-reverse">
+                <div class="col-lg-5">
+                    <div class="account-wrapper">
+                        <h3 class="title">Sign Up</h3>
+                        <form class="account-form" action="/Account/Register">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="userIdInput" name="UserName" placeholder="User Name">
+                                <label for="userIdInput">User Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="Country" placeholder="Country">
+                                <label for="floatingInput">Country</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="WalletAdd" placeholder="Wallet Add">
+                                <label for="floatingInput">Wallet Add</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingInput" name="Name" placeholder="Name">
+                                <label for="floatingInput">Name</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword" name="Password" placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <div class="form-group">
+                                <div class="d-flex justify-content-between flex-wrap pt-sm-2">
+                                    <div class="checkgroup">
+                                        <input type="checkbox" name="remember" id="remember">
+                                        <label for="remember">Remember Me</label>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="d-block default-btn move-top"><span>Signup Now</span></button>
+                            </div>
+                        </form>
+                        <div class="account-bottom">
+                            <span class="d-block cate pt-10">
+                                Already Have an Account? <a href="../signin/signin.html">
+                                    Sign
+                                    In
+                                </a>
+                            </span>
+                            <span class="or"><span>or</span></span>
+                            <h5 class="subtitle">Signup With Social Media</h5>
+                            <ul class="social-media social-color lab-ul d-flex justify-content-center">
+                                <li>
+                                    <a href="#" class="facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="twitter"><i class="fa-brands fa-twitter"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
+                                <li>
+                                    <a href="#" class="pinterest"><i class="fa-brands fa-pinterest-p"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="account-img">
+                        <img src="~/signup/assets/images/account/01.png" alt="shape-image">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- ==========Login Section ends Here========== -->
+    
+    <script src="~/signup/assets/js/jquery-3.6.0.min.js"></script>
+    <script src="~/signup/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="~/signup/assets/js/waypoints.min.js"></script>
+    <script src="~/signup/assets/js/lightcase.js"></script>
+    <script src="~/signup/assets/js/swiper-bundle.min.js"></script>
+    <script src="~/signup/assets/js/countdown.min.js"></script>
+    <script src="~/signup/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/signup/assets/js/wow.min.js"></script>
+    <script src="~/signup/assets/js/isotope.pkgd.min.js"></script>
+    <script src="~/signup/assets/js/functions.js"></script>
+</body>
+
+</html>
+
