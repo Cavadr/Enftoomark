@@ -1,5 +1,6 @@
 ﻿using EnftomarkBack.Models;
 using Microsoft.EntityFrameworkCore;
+using Mvc_BackendProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,6 @@ namespace EnftomarkBack.DAL
         }
         public DbSet<User> User { get; set; }
         public DbSet<Images> Images { get; set; }
+        public DbSet<Additions> Additionss { get; set; }
     }
 }

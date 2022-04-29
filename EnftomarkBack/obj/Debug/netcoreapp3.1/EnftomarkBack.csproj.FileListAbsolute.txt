@@ -550,3 +550,9 @@ C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\bin\Debu
 C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\obj\Debug\netcoreapp3.1\EnftomarkBack.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\obj\Debug\netcoreapp3.1\Razor\Views\Upload\AddProfile.cshtml.g.cs
 C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\obj\Debug\netcoreapp3.1\Razor\Views\Upload\Index.cshtml.g.cs
+C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\_ViewImports.cshtml.g.cs
+C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\_ViewStart.cshtml.g.cs
+C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\DashBoard\Index.cshtml.g.cs
+C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Additions\Index.cshtml.g.cs
+C:\Users\cavad\OneDrive\Desktop\New folder (3)\Enftoomark\EnftomarkBack\obj\Debug\netcoreapp3.1\Razor\Areas\AdminArea\Views\Additions\CreateAditions.cshtml.g.cs

@@ -1,4 +1,5 @@
-﻿@using Microsoft.AspNetCore.Http;
+﻿@model Images
+@using Microsoft.AspNetCore.Http;
 @{
     ViewData["Title"] = "Index";
     string name = Context.Session.GetString("name");
@@ -7,13 +8,9 @@
     string wallet = Context.Session.GetString("wallet");
 }
 
-@using (Html.BeginForm("Index", "AccountController", FormMethod.Get))
-{
-    <p>
-        User Name: @Html.TextBox("p")
-        <input type="submit" value="Search" />
-    </p>
-}
+
+
+
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -48,8 +45,6 @@
 </head>
 
 <body>
-
-
 
     <!-- ==========Profile Section Start Here========== -->
     <section class="profile-section padding-top padding-bottom">
@@ -200,7 +195,7 @@
                                                                 <div class="col">
                                                                     <!-- create item -->
                                                                     <div class="create-nft py-5 px-4">
-                                                                        <form class="create-nft-form">
+                                                                        <form asp-controller="Upload" asp-action="AddProfile"  enctype="multipart/form-data" class="create-nft-form">
                                                                             <!-- upload field -->
                                                                             <div class="upload-item mb-30">
                                                                                 <p>
@@ -208,12 +203,12 @@
                                                                                 </p>
                                                                                 <div class="custom-upload">
                                                                                     <div class="file-btn"><i class="fa-solid fa-file-arrow-up"></i> Upload a file</div>
-                                                                                    <input type="file">
+                                                                                    <input  type="file" asp-for="Picture">
                                                                                 </div>
                                                                             </div>
                                                                             <!-- item name input -->
                                                                             <div class="form-floating item-name-field mb-3">
-                                                                                <input type="text" class="form-control" id="itemNameInput" placeholder="Item Name">
+                                                                                <input asp-for="Name" type="text" class="form-control" id="itemNameInput" placeholder="Item Name">
                                                                                 <label for="itemNameInput">
                                                                                     Item
                                                                                     Name
@@ -221,7 +216,7 @@
                                                                             </div>
                                                                             <!-- item-description -->
                                                                             <div class="form-floating item-desc-field mb-30">
-                                                                                <textarea class="form-control" placeholder="Item Description" id="itemDesc"></textarea>
+                                                                                <textarea asp-for="Desc" class="form-control" placeholder="Item Description" id="itemDesc"></textarea>
                                                                                 <label for="itemDesc">
                                                                                     Item
                                                                                     Description
@@ -284,7 +279,7 @@
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <div class="form-floating">
-                                                                                            <input type="text" class="form-control" id="itemPriceInput" placeholder="Item Price">
+                                                                                            <input asp-for="Price" type="text" class="form-control" id="itemPriceInput" placeholder="Item Price">
                                                                                             <label for="itemPriceInput">
                                                                                                 Item
                                                                                                 Price
@@ -308,8 +303,12 @@
                                                         </div>
                                                         <div class="tab-pane fade mentions-section show active" id="pills-mentions" role="tabpanel" aria-labelledby="pills-mentions-tab">
 
-                                                            <div class="row justify-content-center gx-3 gy-2">
-                                                                <div class="col-lg-4 col-sm-6">
+
+
+                                                            @foreach (var item in ViewBag.ad)
+                                                            {
+
+                                                                <div style="float:left; padding-left:15px" class="col-lg-4 col-sm-6">
                                                                     <div class="nft-item">
                                                                         <div class="nft-inner">
                                                                             <!-- nft top part -->
@@ -342,7 +341,7 @@
                                                                             <!-- nft-bottom part -->
                                                                             <div class="nft-item-bottom">
                                                                                 <div class="nft-thumb">
-                                                                                    <img src="~/Aouthor/assets/images/nft-item/02.jpg" alt="nft-img">
+                                                                                    <img src="~/assets/images/@item.PictureUrl" alt="nft-img">
 
                                                                                     <!-- nft countdwon -->
                                                                                     <ul class="nft-countdown count-down" data-date="July 05, 2022 21:14:01">
@@ -363,17 +362,14 @@
                                                                                 <div class="nft-content">
                                                                                     <h4>
                                                                                         <a href="item-details.html">
-                                                                                            Walking
-                                                                                            On
-                                                                                            AirF
+                                                                                            @item.Name
                                                                                         </a>
                                                                                     </h4>
                                                                                     <div class="price-like d-flex justify-content-between align-items-center">
                                                                                         <p class="nft-price">
                                                                                             Price:
                                                                                             <span class="yellow-color">
-                                                                                                0.34
-                                                                                                ETH
+                                                                                               @item.Price
                                                                                             </span>
                                                                                         </p>
                                                                                         <a href="#" class="nft-like">
@@ -386,364 +382,15 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-4 col-sm-6">
-                                                                    <div class="nft-item">
-                                                                        <div class="nft-inner">
-                                                                            <!-- nft top part -->
-                                                                            <div class="nft-item-top d-flex justify-content-between align-items-center">
 
-                                                                                <div class="more-part">
-                                                                                    <div class=" dropstart">
-                                                                                        <a class=" dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="25,0">
-                                                                                            <i class="fa-brands fa-flickr"></i>
-                                                                                        </a>
 
-                                                                                        <ul class="dropdown-menu">
-                                                                                            <li>
-                                                                                                <a class="dropdown-item" href="#">
-                                                                                                    <span>
-                                                                                                        <i class="fa-solid fa-ban"></i>
-                                                                                                    </span> Report
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a class="dropdown-item" href="#">
-                                                                                                    <span><i class="fa-solid fa-share"></i></span>
-                                                                                                    Share
-                                                                                                </a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!-- nft-bottom part -->
-                                                                            <div class="nft-item-bottom">
-                                                                                <div class="nft-thumb">
-                                                                                    <img src="~/Aouthor/assets/images/nft-item/05.gif" alt="nft-img">
+                                                            }
 
-                                                                                    <!-- nft countdwon -->
-                                                                                    <ul class="nft-countdown count-down" data-date="July 05, 2022 21:14:01">
-                                                                                        <li>
-                                                                                            <span class="days">34</span><span class="count-txt">D</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="hours">09</span><span class="count-txt">H</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="minutes">32</span><span class="count-txt">M</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="seconds">32</span><span class="count-txt">S</span>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="nft-content">
-                                                                                    <h4>
-                                                                                        <a href="item-details.html">
-                                                                                            EUPHORIA
-                                                                                            de
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                    <div class="price-like d-flex justify-content-between align-items-center">
-                                                                                        <p class="nft-price">
-                                                                                            Price:
-                                                                                            <span class="yellow-color">
-                                                                                                0.34
-                                                                                                ETH
-                                                                                            </span>
-                                                                                        </p>
-                                                                                        <a href="#" class="nft-like">
-                                                                                            <i class="fa-solid fa-heart"></i>
-                                                                                            230
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4 col-sm-6">
-                                                                    <div class="nft-item">
-                                                                        <div class="nft-inner">
-                                                                            <!-- nft top part -->
-                                                                            <div class="nft-item-top d-flex justify-content-between align-items-center">
 
-                                                                                <div class="more-part">
-                                                                                    <div class=" dropstart">
-                                                                                        <a class=" dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="25,0">
-                                                                                            <i class="fa-brands fa-flickr"></i>
-                                                                                        </a>
 
-                                                                                        <ul class="dropdown-menu">
-                                                                                            <li>
-                                                                                                <a class="dropdown-item" href="#">
-                                                                                                    <span>
-                                                                                                        <i class="fa-solid fa-ban"></i>
-                                                                                                    </span> Report
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a class="dropdown-item" href="#">
-                                                                                                    <span><i class="fa-solid fa-share"></i></span>
-                                                                                                    Share
-                                                                                                </a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!-- nft-bottom part -->
-                                                                            <div class="nft-item-bottom">
-                                                                                <div class="nft-thumb">
-                                                                                    <img src="~/Aouthor/assets/images/nft-item/03.jpg" alt="nft-img">
 
-                                                                                    <!-- nft countdwon -->
-                                                                                    <ul class="nft-countdown count-down" data-date="July 05, 2022 21:14:01">
-                                                                                        <li>
-                                                                                            <span class="days">34</span><span class="count-txt">D</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="hours">09</span><span class="count-txt">H</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="minutes">32</span><span class="count-txt">M</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="seconds">32</span><span class="count-txt">S</span>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="nft-content">
-                                                                                    <h4>
-                                                                                        <a href="item-details.html">
-                                                                                            Mewao
-                                                                                            com de
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                    <div class="price-like d-flex justify-content-between align-items-center">
-                                                                                        <p class="nft-price">
-                                                                                            Price:
-                                                                                            <span class="yellow-color">
-                                                                                                0.34
-                                                                                                ETH
-                                                                                            </span>
-                                                                                        </p>
-                                                                                        <a href="#" class="nft-like">
-                                                                                            <i class="fa-solid fa-heart"></i>
-                                                                                            278
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4 col-sm-6">
-                                                                    <div class="nft-item">
-                                                                        <div class="nft-inner">
-                                                                            <!-- nft top part -->
-                                                                            <div class="nft-item-top d-flex justify-content-between align-items-center">
-                                                                                <div class="more-part">
-                                                                                    <div class=" dropstart">
-                                                                                        <a class=" dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="25,0">
-                                                                                            <i class="fa-brands fa-flickr"></i>
-                                                                                        </a>
 
-                                                                                        <ul class="dropdown-menu">
-                                                                                            <li>
-                                                                                                <a class="dropdown-item" href="#">
-                                                                                                    <span>
-                                                                                                        <i class="fa-solid fa-ban"></i>
-                                                                                                    </span> Report
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a class="dropdown-item" href="#">
-                                                                                                    <span><i class="fa-solid fa-share"></i></span>
-                                                                                                    Share
-                                                                                                </a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!-- nft-bottom part -->
-                                                                            <div class="nft-item-bottom">
-                                                                                <div class="nft-thumb">
-                                                                                    <img src="~/Aouthor/assets/images/nft-item/01.gif" alt="nft-img">
 
-                                                                                    <!-- nft countdwon -->
-                                                                                    <ul class="nft-countdown count-down" data-date="July 05, 2022 21:14:01">
-                                                                                        <li>
-                                                                                            <span class="days">34</span><span class="count-txt">D</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="hours">09</span><span class="count-txt">H</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="minutes">32</span><span class="count-txt">M</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="seconds">32</span><span class="count-txt">S</span>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="nft-content">
-                                                                                    <h4>
-                                                                                        <a href="item-details.html">
-                                                                                            pet
-                                                                                            mice rio
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                    <div class="price-like d-flex justify-content-between align-items-center">
-                                                                                        <p class="nft-price">
-                                                                                            Price:
-                                                                                            <span class="yellow-color">
-                                                                                                0.34
-                                                                                                ETH
-                                                                                            </span>
-                                                                                        </p>
-                                                                                        <a href="#" class="nft-like">
-                                                                                            <i class="fa-solid fa-heart"></i>
-                                                                                            340
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4 col-sm-6">
-                                                                    <div class="nft-item">
-                                                                        <div class="nft-inner">
-                                                                            <!-- nft top part -->
-                                                                            <div class="nft-item-top d-flex justify-content-between align-items-center">
-
-                                                                                <div class="more-part">
-                                                                                    <div class=" dropstart">
-                                                                                        <a class=" dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="25,0">
-                                                                                            <i class="fa-brands fa-flickr"></i>
-                                                                                        </a>
-
-                                                                                        <ul class="dropdown-menu">
-                                                                                            <li>
-                                                                                                <a class="dropdown-item" href="#">
-                                                                                                    <span>
-                                                                                                        <i class="fa-solid fa-ban"></i>
-                                                                                                    </span> Report
-                                                                                                </a>
-                                                                                            </li>
-                                                                                            <li>
-                                                                                                <a class="dropdown-item" href="#">
-                                                                                                    <span><i class="fa-solid fa-share"></i></span>
-                                                                                                    Share
-                                                                                                </a>
-                                                                                            </li>
-                                                                                        </ul>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <!-- nft-bottom part -->
-                                                                            <div class="nft-item-bottom">
-                                                                                <div class="nft-thumb">
-                                                                                    <img src="~/Aouthor/assets/images/nft-item/05.jpg" alt="nft-img">
-
-                                                                                    <!-- nft countdwon -->
-                                                                                    <ul class="nft-countdown count-down" data-date="July 05, 2022 21:14:01">
-                                                                                        <li>
-                                                                                            <span class="days">34</span><span class="count-txt">D</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="hours">09</span><span class="count-txt">H</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="minutes">32</span><span class="count-txt">M</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="seconds">32</span><span class="count-txt">S</span>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="nft-content">
-                                                                                    <h4>
-                                                                                        <a href="item-details.html">
-                                                                                            Logical
-                                                                                            Impact
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                    <div class="price-like d-flex justify-content-between align-items-center">
-                                                                                        <p class="nft-price">
-                                                                                            Price:
-                                                                                            <span class="yellow-color">
-                                                                                                0.34
-                                                                                                ETH
-                                                                                            </span>
-                                                                                        </p>
-                                                                                        <a href="#" class="nft-like">
-                                                                                            <i class="fa-solid fa-heart"></i>
-                                                                                            330
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4 col-sm-6">
-                                                                    <div class="nft-item">
-                                                                        <div class="nft-inner">
-                                                                            <!-- nft top part -->
-                                                                            <div class="nft-item-top d-flex justify-content-between align-items-center">
-
-                                                                                <div class="more-part"><i class="fa-brands fa-flickr"></i></div>
-                                                                            </div>
-                                                                            <!-- nft-bottom part -->
-                                                                            <div class="nft-item-bottom">
-                                                                                <div class="nft-thumb">
-                                                                                    <img src="~/Aouthor/assets/images/nft-item/04.gif" alt="nft-img">
-
-                                                                                    <!-- nft countdwon -->
-                                                                                    <ul class="nft-countdown count-down" data-date="July 05, 2022 21:14:01">
-                                                                                        <li>
-                                                                                            <span class="days">34</span><span class="count-txt">D</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="hours">09</span><span class="count-txt">H</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="minutes">32</span><span class="count-txt">M</span>
-                                                                                        </li>
-                                                                                        <li>
-                                                                                            <span class="seconds">32</span><span class="count-txt">S</span>
-                                                                                        </li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                                <div class="nft-content">
-                                                                                    <h4>
-                                                                                        <a href="item-details.html">
-                                                                                            Fly
-                                                                                            on high
-                                                                                        </a>
-                                                                                    </h4>
-                                                                                    <div class="price-like d-flex justify-content-between align-items-center">
-                                                                                        <p class="nft-price">
-                                                                                            Price:
-                                                                                            <span class="yellow-color">
-                                                                                                0.34
-                                                                                                ETH
-                                                                                            </span>
-                                                                                        </p>
-                                                                                        <a href="#" class="nft-like">
-                                                                                            <i class="fa-solid fa-heart"></i>
-                                                                                            355
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                             <div class="load-btn">
                                                                 <a href="#" class="default-btn move-bottom">
                                                                     <span>
@@ -2318,7 +1965,7 @@
                                                             <p>Search from best Rarest NFT collections</p>
                                                             <div class="form-floating nft-search-input">
                                                                 <input type="text" class="form-control" placeholder="Search NFT">
-                                                                <label>Search NFTasdas</label>
+                                                                <label>Search NFT</label>
                                                                 <button type="button"> <i class="fa-solid fa-magnifying-glass"></i></button>
                                                             </div>
 
@@ -3986,7 +3633,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+            
     </section>
     <!-- ==========Profile Section Ends Here========== -->
     <!-- All Scripts -->

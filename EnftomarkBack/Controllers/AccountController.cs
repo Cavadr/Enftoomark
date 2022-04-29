@@ -1,5 +1,6 @@
 ﻿using EnftomarkBack.DAL;
 using EnftomarkBack.Models;
+using EnftomarkBack.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -20,6 +21,10 @@ namespace EnftomarkBack.Controllers
         public IActionResult Index(string p)
         {
             var degerler = from d in _context.User select d;
+            if (!string.IsNullOrEmpty(p))
+            {
+                degerler = degerler.Where(m => m.UserName.Contains(p));
+            }
             return View(degerler.ToList());
         }
         public IActionResult SignIn()
@@ -28,6 +33,7 @@ namespace EnftomarkBack.Controllers
         }
         public IActionResult Profile()
         {
+            ViewBag.ad = _context.Images.ToList();
             return View();
         }
         public IActionResult SignUp()
