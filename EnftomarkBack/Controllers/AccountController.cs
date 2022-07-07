@@ -16,6 +16,12 @@ namespace EnftomarkBack.Controllers
         {
             _context = context;
         }
+
+        public IActionResult Index(string p)
+        {
+            var degerler = from d in _context.User select d;
+            return View(degerler.ToList());
+        }
         public IActionResult SignIn()
         {
             return View();

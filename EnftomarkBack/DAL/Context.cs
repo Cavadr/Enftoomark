@@ -14,5 +14,6 @@ namespace EnftomarkBack.DAL
 
         }
         public DbSet<User> User { get; set; }
+        public DbSet<Images> Images { get; set; }
     }
 }

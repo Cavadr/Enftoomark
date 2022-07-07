@@ -7,6 +7,14 @@
     string wallet = Context.Session.GetString("wallet");
 }
 
+@using (Html.BeginForm("Index", "AccountController", FormMethod.Get))
+{
+    <p>
+        User Name: @Html.TextBox("p")
+        <input type="submit" value="Search" />
+    </p>
+}
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
@@ -40,6 +48,8 @@
 </head>
 
 <body>
+
+
 
     <!-- ==========Profile Section Start Here========== -->
     <section class="profile-section padding-top padding-bottom">
@@ -155,6 +165,7 @@
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                             <!-- All NFT tab -->
+
                             <div class="tab-pane activity-page fade show active" id="allNft" role="tabpanel">
                                 <div>
                                     <div class="row">
@@ -192,20 +203,13 @@
                                                                         <form class="create-nft-form">
                                                                             <!-- upload field -->
                                                                             <div class="upload-item mb-30">
-
                                                                                 <p>
                                                                                     PNG,JPG,JPEG,SVG,WEBP,Mp3 & Mp4 (Max-150mb)
                                                                                 </p>
-
-                                                                                @using (Html.BeginForm("Profile", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                                                                                {
-                                                                                    <div class="custom-upload">
-                                                                                        <div class="file-btn"><i class="fa-solid fa-file-arrow-up"></i> Upload a file</div>
-                                                                                        <input type="file" name="myfile">
-
-                                                                                    </div>
-                                                                                    <input type="submit" value="Upload" name="filesubmit">
-                                                                                }
+                                                                                <div class="custom-upload">
+                                                                                    <div class="file-btn"><i class="fa-solid fa-file-arrow-up"></i> Upload a file</div>
+                                                                                    <input type="file">
+                                                                                </div>
                                                                             </div>
                                                                             <!-- item name input -->
                                                                             <div class="form-floating item-name-field mb-3">
@@ -2314,7 +2318,7 @@
                                                             <p>Search from best Rarest NFT collections</p>
                                                             <div class="form-floating nft-search-input">
                                                                 <input type="text" class="form-control" placeholder="Search NFT">
-                                                                <label>Search NFT</label>
+                                                                <label>Search NFTasdas</label>
                                                                 <button type="button"> <i class="fa-solid fa-magnifying-glass"></i></button>
                                                             </div>
 
@@ -2439,7 +2443,7 @@
                                                                 <p class="info-name">Wallet Add</p>
                                                                 <p class="info-details">@wallet</p>
                                                             </li>
-                                                            
+
                                                         </ul>
 
                                                     </div>
